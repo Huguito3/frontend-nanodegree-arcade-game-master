@@ -1,4 +1,5 @@
 // Enemies our player must avoid
+var pontos=0;
 var Enemy = function(x,y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -30,6 +31,9 @@ Enemy.prototype.update = function(dt) {
             this.y < player.playerInitialPositionY + player.height && this.y + this.height > player.playerInitialPositionY) {
                 player.playerInitialPositionX=200;
                 player.playerInitialPositionY=390;
+                alert("You lost! Your score was: "+pontos);
+                pontos=0;
+                document.getElementById('pontos').innerHTML="Score: "+ pontos;
     }
     
 };
@@ -53,6 +57,8 @@ Player.prototype.update = function(dt) {
   if(this.playerInitialPositionY<=0){
     this.playerInitialPositionX=200;
     this.playerInitialPositionY=390;
+    pontos+=1;
+    document.getElementById('pontos').innerHTML="Score: "+ pontos;
   }
   
 };
